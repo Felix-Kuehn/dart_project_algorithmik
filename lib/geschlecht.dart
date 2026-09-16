@@ -1,0 +1,1 @@
+enum Geschlecht {maennlich, weiblich, divers}

@@ -2,24 +2,26 @@ import 'dart:io';
 import 'dart:math';
 
 int sixCount = 0;
-int? inputThrowCount ;
+int inputThrowCount = 0 ;
 int randomNumber = 0;
 List<int> allThrows =[];
 
   int askThrow () {
-while (inputThrowCount == null || inputThrowCount! < 1 )
+     String? input;
+while (input == null || int.tryParse(input) == null || int.parse(input) < 1 )
   {
   print ('Wie oft möchtest du würfeln ?');
-  inputThrowCount = int.tryParse(stdin.readLineSync() ?? '');
+  input = stdin.readLineSync();
   }
-  return inputThrowCount!;
+  inputThrowCount = int.parse(input);
+  return inputThrowCount;
 }
 
-void playDice(){
+void playDice(int count){
   int i = 0;
-    for (int i = 0; i < inputThrowCount!; i++ ){
-        var random = Random();
-        int result = random.nextInt(6)+1;
+    final random = Random();
+    for (int i = 0; i < count!; i++ ){
+        final result = random.nextInt(6)+1;
 
           if (result == 6){
             sixCount++;
@@ -33,15 +35,14 @@ void playDice(){
             allThrows.add(result);
           }
     }
-    if (i == inputThrowCount){
+    if (i == count){
     print('Limit erreicht');
     }
-    print('Alle Würfe: $allThrows');
 }
 
 void main(){
 
 askThrow();
-playDice();
-
+playDice(inputThrowCount);
+print('Alle Würfe: $allThrows');
 }

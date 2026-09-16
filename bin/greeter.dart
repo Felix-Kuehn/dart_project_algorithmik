@@ -1,9 +1,9 @@
 import 'dart:io';
 
-String? firstName;
-String? lastName = '';
+String? firstName = '';
+String? lastName = ''; 
 int? age;
-bool sex = true;
+String sex = '';
 String salutation = '';
 DateTime date = DateTime.now();
 int dayHour = 0;
@@ -30,9 +30,19 @@ String getLastName() {
       return lastName!;
 }
 
+
+/* String askingName (String message){
+  String? userInput;
+  while (userInput == null || userInput.isEmpty){
+        print(message);
+        userInput = stdin.readLineSync();
+  }
+  return userInput;
+} */
+
 int getAge() {
 
-  while (age == null || age! <= 0 || age! >= 150)
+  while (age == null ||  age! <= 0 || age! >= 150)
   {
   print ('Wie alt bist du?');
   age = int.tryParse(stdin.readLineSync() ?? ''); // sdin will be read first and gives out a numberstring or null. null is catched by the ?? and returns an empty string instead of null, which is read by int.parse and this returns null //
@@ -40,37 +50,30 @@ int getAge() {
   return age!;
 }
 
-bool getSex() {
+String getSex() {
     
   String? sexWritten;
 
-    while ( sexWritten != 'm' && sexWritten != 'f') 
+    while ( sexWritten != 'm' && sexWritten != 'f' && sexWritten != 'd') 
     {
 
-      print ('Bist du männlich oder weiblich? m / f');
+      print ('Bist du männlich, weiblich oder divers?? m / f/ d');
       sexWritten = stdin.readLineSync();
-
-        switch (sexWritten){
-
-        case 'f':
-        sex = true;
-        break;
-
-        case 'm':
-        sex = false;
-        break;
       }
+      sex = sexWritten!;
+       return sex;
   }
-  return sex;
-}
 
-String setSalutation (bool? sex) {
-    if (sex == true){
+String setSalutation (String? sex) {
+    if (sex == 'f'){
       salutation = 'Frau';
     }
-    else {
+    if (sex == 'm') {
       
       salutation = 'Herr';
+    }
+    else {
+      salutation = '';
     }
     return salutation;
 }
@@ -96,6 +99,18 @@ void printSalutation () {
     print ('Hallo $firstName !');
   }
 
+  else if (sex == 'd'){
+        if (dayTime == 1){
+        print ('Guten Morgen, $firstName !');
+        }
+        else if (dayTime == 2){
+        print ('Guten Tag, $firstName !');
+        }
+        else if (dayTime == 3){
+        print ('Guten Abend, $firstName !');
+        }
+  }
+
   else {
         if (dayTime == 1){
         print ('Guten Morgen, $salutation $lastName !');
@@ -103,7 +118,7 @@ void printSalutation () {
         else if (dayTime == 2){
         print ('Guten Tag, $salutation $lastName !');
         }
-        else if(dayTime == 3){
+        else if (dayTime == 3){
         print ('Guten Abend, $salutation $lastName !');
         }
   }
@@ -114,9 +129,11 @@ void main() {
 getCurrentHour();
 getFirstName();
 getLastName();
+/* askingName('Wie lautet dein Vorname ?');
+askingName('Wie lautet dein Nachname ?'); */
 getAge();
 getSex();
 setSalutation(sex);
-print (dayTime);
+/* print (dayTime); */
 printSalutation();
 }

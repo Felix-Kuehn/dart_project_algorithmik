@@ -14,18 +14,18 @@ return givenNumber!;
 }
 
 void calculatePrimeNumbers(){
+  bool isPrime = true;
   for (int i= 2; i < givenNumber!; i++){
-    bool isPrime = true;
 
       for (int j = 2; j < i; j++){
-       if (i % j == 0){  //checks if every number before herself cant divide the number, if one has a rest of 0, the loop instantly breaks and it goes to the next i //
-        isPrime = false;
-        break;
-       }
+        if (i % j == 0){  //checks if every number before herself cant divide the number, if one has a rest of 0, the loop instantly breaks and it goes to the next i //
+          isPrime = false;
+          break;
         }
+      }
   
-        if (isPrime){
-          primeNumbers.add(i);
+      if (isPrime){
+        primeNumbers.add(i);
       }
     
   }
