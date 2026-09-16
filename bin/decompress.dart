@@ -1,10 +1,13 @@
 import 'package:dart_project_algorithmik/compress_functions.dart';
 
 void main(List<String> argument){
+  String input;
 if (argument.isEmpty){
-  userchainDecomp();
+ input = userchainDecomp();
 }
-else {userchainDecomp(argument[0]);
+else {
+  
+  input =userchainDecomp(argument[0]);
 
 }
 

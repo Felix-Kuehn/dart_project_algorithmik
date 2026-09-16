@@ -67,7 +67,7 @@ Geschlecht inputGeschlecht(String message){
       }
       return geschlecht!;
   } */
-bool validityCheckCompress(String chain){
+/* bool validityCheckCompress(String chain){
   return RegExp(r'[\d\W]').hasMatch(chain); //if true is returned, Validity check is failed //
 }
 
@@ -93,4 +93,33 @@ bool validityCheckCompress(String chain){
           }
             return a;
       }
+  } */
+
+   String compress (String input){
+    String sorted = '';
+    int lastEnd = 0;
+
+    input = input.toUpperCase();
+    final list = RegExp(r'([A-Z])\1{2,}').allMatches(input); // 1+ would be one other repetition, 1{2,} means at least 2 repetitions {min,max} //
+
+     for (final match in list) {
+
+      sorted += input.substring(lastEnd, match.start);
+
+    /* print(match.group(0)!.length);
+    print(match.group(0));    */       // 0 points to the square bracket number in RegExp(). 0 means everything, 1 to the first bracket, and f.e. to the second bracket. As i have only one it says out of range. //
+      sorted += ('${match.group(0)!.length}${match.group(1)}'); // += puts everything next to eachother instead of under each other //
+  
+    lastEnd = match.end;
+  
   }
+  sorted += input.substring(lastEnd);
+  print (sorted);
+
+  return sorted;
+   }
+
+ void main(){
+
+  compress('abbcccddddeeeeeeeeeeeeef');
+ }
