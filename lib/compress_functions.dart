@@ -114,7 +114,5 @@ return input.replaceAllMapped(list, (match) {
         result += allChars[random.nextInt(allChars.length)];
       }
     }
-
-    print(result);
     return result;
   }

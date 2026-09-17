@@ -20,7 +20,7 @@ void main(){
   check = (originString == newString);
 
   if (check == true){
-    print ('Das Programm funktionier wie gewünscht.');
+    print ('Das Programm funktioniert wie gewünscht.');
   }
   else {
     print ('Es gibt Probeleme mit dem Programm.');

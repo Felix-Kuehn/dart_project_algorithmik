@@ -95,7 +95,11 @@ Geschlecht inputGeschlecht(String message){
       }
   } */
 
-   String compress (String input){
+//Test Compress//
+
+// -------------------------------------------------------//
+
+/*    String compress (String input){
     String sorted = '';
     int lastEnd = 0;
 
@@ -122,4 +126,36 @@ Geschlecht inputGeschlecht(String message){
  void main(){
 
   compress('abbcccddddeeeeeeeeeeeeef');
- }
+ } */
+
+ // Test Decompress //
+
+ //---------------------------------------------------------//
+
+ String decompress (String input){
+
+    input = input.toUpperCase();
+    
+    final list = RegExp(r'([A-Z])(\d+)');
+
+///// The following example finds all matches of a [RegExp] in a [String]
+/// and iterates through the returned iterable of `Match` objects.
+/// ```dart
+/// final regExp = RegExp(r'(\w+)');
+/// const string = 'Parse my string';
+/// final matches = regExp.allMatches(string);
+/// for (final m in matches) {
+///   String match = m[0]!;
+///   print(match);
+/// }
+/// ```
+
+return input.replaceAllMapped(list, (match) {
+    final letter = match.group(1)!;
+    final count = int.parse(match.group(2)!);
+    return letter * count;
+});
+
+    }
+    
+    
