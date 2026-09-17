@@ -11,4 +11,6 @@ else {
 
 }
 
+String result = decompress(input);
+print (result);
 }
